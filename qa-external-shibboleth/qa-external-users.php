@@ -65,6 +65,28 @@
 		return $infos;
 	}
 
+	function check_user_access() {
+		global $SHIB_ACLS;
+
+		if (!isset($SHIB_ACLS) || !is_array($SHIB_ACLS)) return true;
+
+		foreach($SHIB_ACLS as $attr => $regs) {
+			// Get attribute value
+			$attr_val=get_shib_attr($attr);
+
+			// Check attribute value
+			if(!$attr_val) continue;
+
+			// Check regex on value
+			if (!is_array($regs)) $regs=array($regs);
+			foreach ($regs as $reg) {
+				if (preg_match($reg,$attr_val))
+					return true;
+			}
+		}
+		return false;
+	}
+
 	function qa_get_mysql_user_column_type() {
 		return 'VARCHAR(32)';
 	}
@@ -140,6 +162,12 @@
 			header('Location: '.SHIB_LOGOUT_URL);
 			exit();
 		}
+
+		if (!check_user_access()) {
+			header('HTTP/1.0 403 Forbidden');
+			die(SHIB_ACCESS_DENIED_MESSAGE);
+		}
+
 		return get_shib_user_infos();
 
 	}

@@ -14,6 +14,40 @@ $SHIB_USERS_ROLE=array(
 define('SHIB_DEFAULT_USER_ROLE',QA_USER_LEVEL_BASIC);
 
 /*
+ * ACLs based on Shibboleth attributes values
+ *
+ * Format :
+ *
+ * $SHIB_ACLS=array(
+ * 	'[attr1]' => array (
+ *		'[regex1]',
+ *		'[regex2]',
+ *		[...]
+ *	),
+ *	'[attr2]' => array (
+ *		[...]
+ *	),
+ *	[...]
+ * );
+ *
+ * Access is granted if :
+ *  - $SHIB_ACLS is not defined
+ *  - $SHIB_ACLS in not an array
+ *  - if at least one regex match with at least one value of corresponding attribute
+ */
+/*
+$SHIB_ACLS=array(
+	'eduPersonPrimaryAffiliation' => array (
+		'/^staff$/',
+		'/^faculty$/',
+	)
+);
+*/
+
+// Message to display on access denied
+define('SHIB_ACCESS_DENIED_MESSAGE','You are not authorized to access to this application.');
+
+/*
  * Shibboleth attributes mapping
  */
 
