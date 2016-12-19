@@ -84,6 +84,7 @@
 					return true;
 			}
 		}
+		error_log("User access denied by ACLs : ".print_r($_SERVER,1));
 		return false;
 	}
 
