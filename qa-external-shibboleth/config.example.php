@@ -34,3 +34,8 @@ define('SHIB_PUBLIC_NAME_ATTR','displayName');
 
 // Shibboleth public name alternative attribute
 define('SHIB_ALTERNATE_PUBLIC_NAME_ATTR','cn');
+
+/*
+ * Shibboleth Logout URL
+ */
+define('SHIB_LOGOUT_URL','/Shibboleth.sso/Logout');

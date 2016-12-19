@@ -31,3 +31,4 @@ Configuration
   * **SHIB_ALTERNATE_MAIL_ATTR** : Shibboleth attribute corresponding to alternative user's mail (ex: *supannMailPerso*)
   * **SHIB_PUBLIC_NAME_ATTR** : Shibboleth attribute corresponding to user's full name (ex: *displayName*)
   * **SHIB_ALTERNATE_PUBLIC_NAME_ATTR** : Shibboleth attribute corresponding to alternative user's full name (ex: *cn*)
+  * **SHIB_LOGOUT_URL** : Shibboleth logout URL (ex: */Shibboleth.sso/Logout*)
